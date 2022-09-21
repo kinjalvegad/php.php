@@ -1,4 +1,4 @@
-//1A,2B,3C,4D//
+//1A,2B,3C,4D//<br></hr>
 <?php 
    if(isset($_POST['txtno']))
    {
