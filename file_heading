@@ -1,0 +1,36 @@
+<form action="file.php" method="POST" enctype="multipart/form-data">
+	<input type="text"name="txtroll"placeholder="enter roll no"></br>
+	<input type="text"name="txtnm"placeholder="enter name"></br>
+	<input type="file" name="fileupload1"  id="imgInp" accept="png.jpg.jpeg"></br>
+	<img src=" " id="blah" alt="select image" height="150"width="150"></br>
+	<input type="submit"value="save">
+</form>
+<?php 
+	if(isset($_POST['txtroll']))
+	{
+			$con=mysqli_connect("localhost","root","","shop_details");
+				if($con)
+				{
+					$roll=$_POST['txtroll'];
+					$nm=$_POST['txtnm'];
+					$target_dir="image/";
+					$name=rand(150,480000);
+					$extension=pathinfo($_FILES["fileupload1"]["name"],PATHINFO_EXTENSION);
+					$fnm=$name.$extension;
+					move_uploaded_FILE($_FILES["fileupload1"]["tmp_name"],$target_dir.$name.".".$extension);
+					$sql="INSERT INTO `file_heading`(`roll`, `name`,`pro_file`) VALUES ('$roll','$nm','$fnm')";
+					mysqli_query($con,$sql);
+				}
+	}
+					
+?>	
+<script>
+	imgInp.onchange = evt =>
+		{
+			const [file] = imgInp.files
+				if (file)
+			{
+				blah.src = URL.createObjectURL(file)
+			}
+		}
+</script>
