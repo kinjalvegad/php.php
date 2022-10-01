@@ -1,7 +1,8 @@
 <?php
-	$con = mysqli_connect("localhost","root","","college_mgt");
+	$con = mysqli_connect("localhost","root","","shop_details");
 	$id = $_GET['id'];
-	$sql = "DELETE FROM `stud` WHERE id='$id'";
-	mysqli_query($con,$sql);
-	header("location:index2.php");
+	$sql = "DELETE FROM `file_heading` WHERE id='$id'";
+	$res = mysqli_query($con,$sql);
+	header("location:file.php");
 ?>
+
