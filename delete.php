@@ -1,7 +1,10 @@
 <?php
-	$con = mysqli_connect("localhost","root","","sam_table");
-	$id = $_GET['id'];
-	$sql = "DELETE from `sam_table` WHERE id="$id"";
-	mysqli_query($con,$sql);
-	header("location:index.php");
+	require "config.php";
+	    $emp_code=$_GET['id'];
+		$sql="DELETE from `emp` WHERE `emp_code`='$emp_code'";
+		$res=mysqli_query($con,$sql);
+		header("location:2.php");
+	
+
 	?>
+	
